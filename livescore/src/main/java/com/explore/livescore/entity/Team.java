@@ -10,13 +10,54 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Team {
     @Id
-    Integer teamId;
-    String teamName;
+    private Integer teamId;
+    private String teamName;
     
     @OneToMany(mappedBy = "team")
-    List<Player> players;
+    private List<Player> players;
 
     @OneToOne
     @JoinColumn(name = "team_score_id")
-    TeamScore teamScore;
+    private TeamScore teamScore;
+
+    public Team(Integer teamId, String teamName, List<Player> players, TeamScore teamScore) {
+        this.teamId = teamId;
+        this.teamName = teamName;
+        this.players = players;
+        this.teamScore = teamScore;
+    }
+
+    public Integer getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public TeamScore getTeamScore() {
+        return teamScore;
+    }
+
+    public void setTeamScore(TeamScore teamScore) {
+        this.teamScore = teamScore;
+    }
+
+    
 }
